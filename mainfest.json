@@ -1,0 +1,20 @@
+{
+  "name": "برنامه آزمون وکالت ۱۴۰۶",
+  "short_name": "وکالت ۱۴۰۶",
+  "description": "برنامه و پیگیری مطالعه آزمون وکالت",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EEF2F6",
+  "theme_color": "#EEF2F6",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
