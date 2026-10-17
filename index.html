@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>برنامه آزمون وکالت ۱۴۰۶</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;--bg:#EEF2F6;--card:#FFFFFF;--ink:#16202E;--mute:#4F5B6C;--line:#CBD4E0;--ok:#0F7A63;--bad:#B93F22}
+.civil{--c:#4B3FB0;--t:#ECEAFB}.cp{--c:#0F7A63;--t:#E0F3ED}.crim{--c:#B93F22;--t:#FBE9E3}.adak{--c:#A82C63;--t:#FBE7F0}.com{--c:#8F5C08;--t:#FAEFD8}.cu{--c:#5E6675;--t:#ECEFF3}
+.cl{--c:#4B3FB0;--t:#ECEAFB}.ts{--c:#B93F22;--t:#FBE9E3}.lt{--c:#0F7A63;--t:#E0F3ED}.bf{--c:#8F5C08;--t:#FAEFD8}.rv{--c:#5E6675;--t:#ECEFF3}.er{--c:#A82C63;--t:#FBE7F0}.mk{--c:#1F5FA8;--t:#E3EEFA}.bk{--c:#0B7285;--t:#E0F4F7}
+@media (prefers-color-scheme:dark){
+:root{--bg:#0E131B;--card:#161D28;--ink:#E8ECF2;--mute:#A3AEBD;--line:#2B3546;--ok:#63D3B3;--bad:#F4A088}
+.civil,.cl{--c:#B1AAF3;--t:#221E55}.cp,.lt{--c:#63D3B3;--t:#0B3A31}.crim,.ts{--c:#F4A088;--t:#47200F}.adak,.er{--c:#F29DBE;--t:#471730}.com,.bf{--c:#EEB652;--t:#44300A}.cu,.rv{--c:#AAB2BF;--t:#2A2F39}.mk{--c:#8DB8F0;--t:#14304F}.bk{--c:#6FD0E0;--t:#0B3540}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,"Segoe UI",system-ui,sans-serif;line-height:1.6;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+main{max-width:760px;margin:0 auto;padding:24px 16px 56px}
+h1{font-size:clamp(28px,8vw,40px);font-weight:800;margin:0 0 4px;line-height:1.25}
+.sub{margin:0;color:var(--mute);font-size:15px}
+button{font:inherit;color:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible,[role=button]:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+[hidden]{display:none!important}
+.fork{margin:14px 0 0;padding:14px;border:2px dashed var(--ink);border-radius:14px;background:var(--card)}.fork h3{margin:0 0 4px;font-size:18px;font-weight:800}.fork p{margin:0 0 10px;color:var(--mute);font-size:14px}.fork .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}.fork .two button{font-weight:800;font-size:16px;background:var(--bg);border:1.5px solid var(--ink);border-radius:12px;padding:12px 8px;min-height:64px;cursor:pointer}.fork .two small{display:block;font-weight:400;font-size:12px;color:var(--mute);margin-top:2px}
+.tabs{display:flex;gap:6px;margin:16px 0 0;padding:4px;background:var(--card);border:1px solid var(--line);border-radius:14px;position:sticky;top:8px;z-index:5}
+.tabs button{flex:1;font-size:15px;font-weight:600;background:transparent;border:0;border-radius:10px;padding:8px 6px;cursor:pointer;min-height:44px}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+#now,.alert,.wc{margin:14px 0 0;padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line);font-size:15px}
+#now b,.wc b{font-weight:800}
+.alert{border-color:var(--bad);border-width:1.5px}
+.alert.info{border-color:var(--line);border-width:1px}
+.go{display:inline-block;margin-top:8px;font-size:14px;font-weight:600;background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:6px 14px;min-height:38px;cursor:pointer}
+.pk{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+.pk select{font:inherit;font-size:15px;padding:6px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);min-height:40px}
+.pk button,.mv button{font-size:13px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px 10px;min-height:40px;cursor:pointer}
+.pk small{flex-basis:100%;color:var(--mute);font-size:12.5px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 0}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 8px;text-align:center}
+.tile b{display:block;font-size:22px;font-weight:800;line-height:1.3}
+.tile small{display:block;color:var(--mute);font-size:12px;line-height:1.35}
+figure{margin:14px 0 0;padding:14px 12px 10px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+svg{display:block;width:100%;height:auto}
+figcaption{margin-top:6px;font-size:13px;color:var(--mute)}
+.axis{stroke:var(--line);stroke-width:1.5}
+.tick{fill:var(--mute);font-size:17px;font-family:inherit;text-anchor:middle}
+.bar{fill:var(--c);transform-box:fill-box;transform-origin:50% 100%;animation:grow .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*30ms)}
+.bar.bg{opacity:.28}
+@keyframes grow{from{transform:scaleY(0)}}
+.track{fill:var(--line)}
+.fill.cf{fill:var(--c)}
+.fill{fill:var(--ok);transform-box:fill-box;transform-origin:100% 50%;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.seg-rect{fill:var(--c);stroke:var(--card);stroke-width:2;transform-box:fill-box;transform-origin:100% 50%;animation:sweep .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*90ms);transition:opacity .25s}
+.seg-rect.op{fill:var(--t);stroke:var(--c);stroke-dasharray:6 4;stroke-width:2}
+@keyframes sweep{from{transform:scaleX(0)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.chip{font-size:14px;font-weight:600;color:var(--c);background:var(--t);border:1.5px solid var(--c);border-radius:999px;padding:5px 12px;cursor:pointer;min-height:36px}
+.chip.op{border-style:dashed}
+.chip[aria-pressed="true"]{background:var(--c);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:560px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cell{position:relative;overflow:hidden;text-align:right;background:var(--t);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);border-radius:12px;padding:10px 12px 14px;cursor:pointer;transition:opacity .25s;width:100%}
+.cell.cu{border-style:dashed;cursor:default}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.wk{font-weight:800;font-size:15px}
+.dt{font-size:12px;color:var(--mute)}
+.sb{margin:2px 0;color:var(--c);font-weight:800;font-size:18px}
+.ln{display:flex;justify-content:space-between;gap:6px;font-size:13px;color:var(--mute)}
+.pf{margin-top:4px;font-size:12.5px;font-weight:600;color:var(--ink);min-height:20px}
+.cell .pg,.b .pg{position:absolute;inset-inline:0;bottom:0;height:6px;background:color-mix(in srgb,var(--c) 22%,transparent)}
+.pg i{display:block;height:100%;width:0;background:var(--c);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.cell.now{outline:3px solid var(--ink);outline-offset:2px}
+.badge{display:inline-block;margin-inline-start:6px;padding:0 8px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:11px;font-weight:600}
+.ph{grid-column:1/-1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:15px;cursor:pointer;font-weight:600}
+.ph small{display:block;color:var(--mute);font-size:13px;font-weight:400}
+.ph.now{outline:3px solid var(--ink);outline-offset:2px}
+.dim{opacity:.2}
+.wknav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 0 0}
+.wknav button{font-size:14px;font-weight:600;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 12px;min-height:44px;cursor:pointer}
+.wknav .mid{flex:1;text-align:center;line-height:1.35}
+.wknav .mid b{display:block;font-size:17px;font-weight:800}
+.wknav .mid small{color:var(--mute);font-size:13px}
+.rows{display:flex;flex-direction:column;gap:6px}
+.r{display:grid;grid-template-columns:58px repeat(4,minmax(0,1fr));gap:5px;align-items:stretch;padding:4px;border-radius:14px;border:2px solid transparent}
+.r.today{border-color:var(--ink);background:var(--card)}
+.d{display:flex;flex-direction:column;justify-content:center;font-weight:800;font-size:14px;line-height:1.3}
+.d small{font-weight:400;font-size:11.5px;color:var(--mute)}
+.tg{display:inline-block;margin-top:2px;padding:0 6px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:11px;font-weight:600;width:fit-content}
+.b{position:relative;overflow:hidden;background:var(--t);border:1px solid var(--c);border-radius:10px;padding:8px 4px 10px;display:flex;flex-direction:column;justify-content:center;text-align:center;min-height:84px;cursor:pointer;transition:opacity .25s}
+.b.op{border-style:dashed}
+.b b{font-weight:800;font-size:14px;color:var(--ink)}
+.b .lb{font-size:12px;line-height:1.35;color:var(--c);font-weight:600}
+.b small{font-size:11.5px;color:var(--mute)}
+.b .st{font-size:11.5px;font-weight:600;color:var(--ink);min-height:18px}
+.b.done{border-style:solid}
+.b.done .st{color:var(--ok)}
+.b.skip{opacity:.55}
+.b.skip b,.b.skip .lb{text-decoration:line-through}
+.s2{grid-column:span 2}
+.bonus{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 12px;width:100%;margin:10px 0 0;text-align:right;min-height:64px;padding:10px 14px;cursor:default}
+dialog{margin:auto auto 0;width:min(100%,520px);border:0;border-radius:20px 20px 0 0;padding:18px 16px 24px;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog h2{margin:0;font-size:20px;font-weight:800}
+dialog p{margin:2px 0 14px;color:var(--mute);font-size:14px}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f label{display:block;font-size:13px;color:var(--mute);margin-bottom:4px}
+.f input,textarea{width:100%;font:inherit;font-size:20px;font-weight:800;text-align:center;padding:10px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+textarea{font-size:13px;font-weight:400;text-align:left;direction:ltr;min-height:120px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.acts button{min-height:46px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);font-weight:600;font-size:15px;cursor:pointer}
+.acts .pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.acts .full{border-color:var(--ok);color:var(--ok)}
+.acts .wide{grid-column:1/-1}
+.foot{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.foot button{font-size:13px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 12px;min-height:38px;cursor:pointer}
+.foot p{flex-basis:100%;margin:0;font-size:12.5px;color:var(--mute)}
+@media (prefers-reduced-motion:reduce){.bar,.seg-rect{animation:none}.fill,.pg i,.b,.cell,.seg-rect{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<h1>برنامه آزمون وکالت</h1>
+<p class="sub">نقشه کلی و هفته، یک‌جا. هر هفته که ثبت کنی، عملکردش روی نقشه می‌نشیند.</p>
+<div class="tabs" id="tabs" role="group" aria-label="نمایش">
+<button type="button" data-v="map" aria-pressed="true">نقشه راه</button>
+<button type="button" data-v="week" aria-pressed="false">هفته</button>
+</div>
+<section id="vMap">
+<div id="now"></div>
+<div class="wc"><b>تاریخ شروع هفته ۱</b>
+<div class="pk"><select id="jy" aria-label="سال"></select><select id="jm" aria-label="ماه"></select><select id="jd" aria-label="روز"></select><button type="button" id="addc">افزودن هفته جبران</button><small id="snap">هفته‌ها از شنبه شروع می‌شوند. هفته‌های جبران را با دکمه‌های داخل خودشان جابه‌جا کن.</small></div></div>
+<div class="tiles" id="tiles"></div>
+<div class="alert" id="alert" hidden></div>
+<figure><svg id="chart" viewBox="0 0 620 176" role="img" aria-label="نمودار دقیقه‌های کلاس هر هفته و بخش انجام‌شده"></svg>
+<figcaption>ارتفاع هر ستون دقیقه‌های کلاس آن هفته است. بخش پررنگ همان مقداری است که گذرانده‌ای.</figcaption></figure>
+<div class="chips" id="schips" role="group" aria-label="نمایش یک درس"></div>
+<div class="grid" id="grid" aria-label="هفته به هفته"></div>
+<div class="fork" id="fork"></div>
+</section>
+<section id="vWeek" hidden>
+<div class="wknav"><button type="button" id="next" aria-label="هفته بعد">هفته بعد</button><div class="mid"><b id="wlabel"></b><small id="wrange"></small></div><button type="button" id="prev" aria-label="هفته قبل">هفته قبل</button></div>
+<div class="wc" id="wc"></div>
+<figure id="cfig" class="cl" hidden><svg viewBox="0 0 620 34" role="img" aria-label="پیشرفت محتوای کلاس این هفته"><rect class="track" x="0" y="4" width="620" height="26" rx="13"/><rect class="fill cf" id="cfill" x="0" y="4" width="620" height="26" rx="13" style="transform:scaleX(0)"/></svg><figcaption id="ccap"></figcaption></figure>
+<figure><svg viewBox="0 0 620 34" role="img" aria-label="پیشرفت زمان بلوک‌ها در این هفته"><rect class="track" x="0" y="4" width="620" height="26" rx="13"/><rect class="fill" id="fill" x="0" y="4" width="620" height="26" rx="13" style="transform:scaleX(0)"/></svg><figcaption id="pcap"></figcaption></figure>
+<figure id="tfig" class="ts" hidden><svg viewBox="0 0 620 34" role="img" aria-label="پیشرفت تست این هفته"><rect class="track" x="0" y="4" width="620" height="26" rx="13"/><rect class="fill cf" id="tfill" x="0" y="4" width="620" height="26" rx="13" style="transform:scaleX(0)"/></svg><figcaption id="tcap"></figcaption></figure>
+<figure><svg id="bar" viewBox="0 0 620 52" role="img" aria-label="سهم هر نوع بلوک از دقیقه‌های یک هفته"></svg><figcaption id="cap"></figcaption></figure>
+<div class="chips" id="kchips" role="group" aria-label="نمایش یک نوع بلوک"></div>
+<div class="rows" id="rows" aria-label="جدول روزهای هفته"></div>
+<div id="bonusWrap"></div>
+</section>
+<div class="foot"><button type="button" id="bk">پشتیبان‌گیری و بازگردانی</button><p id="stnote">پیشرفت در مرورگر همین دستگاه ذخیره می‌شود. گاهی از آن پشتیبان بگیر.</p></div>
+</main>
+<dialog id="dlg">
+<h2 id="dt"></h2><p id="dp"></p>
+<div class="f"><div><label for="inD">چند دقیقه انجام شد</label><input id="inD" type="text" inputmode="numeric" autocomplete="off"></div><div><label for="inR">چند دقیقه مانده</label><input id="inR" type="text" inputmode="numeric" autocomplete="off"></div></div>
+<div class="f" id="rowC" hidden style="grid-template-columns:1fr;margin-top:10px"><div><label for="inC">چند دقیقه از محتوای کلاس رد شد (طول ویدیو)</label><input id="inC" type="text" inputmode="numeric" autocomplete="off"><p style="margin:4px 0 0;font-size:12.5px">اگر خالی بگذاری، با سرعت ۱٫۲۵× حساب می‌شود.</p></div></div>
+<div class="acts"><button type="button" class="full" id="bFull">کاملش کردم</button><button type="button" id="bSkip">انجام ندادم</button><button type="button" class="pri wide" id="bSave">ذخیره</button><button type="button" id="bClear">پاک کردن</button><button type="button" id="bClose">بستن</button></div>
+</dialog>
+<dialog id="dlg2">
+<h2>پشتیبان</h2><p>متن زیر کل پیشرفت و ترتیب هفته‌هاست. برای بازگردانی، متن پشتیبان را اینجا بچسبان.</p>
+<textarea id="ta" aria-label="متن پشتیبان"></textarea>
+<div class="acts"><button type="button" id="bCopy">کپی</button><button type="button" class="pri" id="bRest">بازگردانی</button><button type="button" class="wide" id="bClose2">بستن</button></div>
+</dialog>
+<script>
+(function(){
+var F=function(s){return String(s).replace(/\d/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'[d]})};
+var toEn=function(s){return String(s).replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)}).replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)})};
+var $=function(id){return document.getElementById(id)},DAYMS=864e5,NS='http://www.w3.org/2000/svg';
+var N={civil:'مدنی',cp:'آدم',crim:'جزا',adak:'آدک',com:'تجارت'};
+var KIND={cl:'کلاس',bk:'کتاب',ts:'تست',er:'دفتر اشتباهات',mk:'آزمون آزمایشی',bf:'بافر',rv:'مرور',lt:'درس سبک'};
+var KORDER=['cl','bk','ts','er','mk','bf','rv','lt'];
+var PHN={sard:'سردفتری',minor:'متون و فرعی‌ها',learn:'کلاس و تست',test:'تست‌محور',mock:'آزمون آزمایشی',final:'مرور نهایی',cu:'جبران و مرور'};
+var PHT={sard:'ثبت، دفاتر، ادبیات، عربی، احکام و هوش (سردفتری)',minor:'اساسی، متون فقه، ثبت و اصول فقه',test:'تست‌محور، دور دوم',mock:'آزمون آزمایشی زمان‌دار',final:'مرور نهایی'};
+var PHS={sard:'سرفصل دقیق را با دفترچه‌ی آزمون چک کن',minor:'درسی که آزمونت ندارد را رد کن',test:'',mock:'۱۵۰ دقیقه، با نمره منفی',final:'فقط دفتر اشتباهات'};
+var DAYS=['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'];
+var MONTHS=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+var CL=[['civil','1–3',763],['civil','4–6',769],['civil','7–9',755],['civil','10–13',982],['civil','14–17',1008],['civil','18–21',1163],['civil','22–26',1024],['civil','27–30',1043],
+['cp','1–5',961],['cp','6–10',894],['cp','11–15',1031],['cp','16–20',1127],['crim','1–3',959],['crim','4–6',1059],['crim','7–9',1045],['crim','10–12',1026],['crim','13–15',934],['crim','16–18',980],['crim','19–22',1072],
+['adak','1–5',1104],['adak','6–10',1004],['adak','11–15',1045],['adak','16–21',1109],['com','1–7',1201],['com','8–14',1079],['com','15–21',1022]];
+var KEY='vk_plan_v2',canStore=true,sf=null,kf=null,cur=null;
+/* dates */
+var jf=new Intl.DateTimeFormat('fa-IR-u-ca-persian-nu-latn',{year:'numeric',month:'numeric',day:'numeric'});
+var pf=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{day:'numeric',month:'long'});
+function jp(d){var o={};jf.formatToParts(d).forEach(function(x){o[x.type]=x.value});return[+o.year.replace(/\D/g,''),+o.month,+o.day]}
+function j2g(y,m,d){for(var dd=d;dd>=1;dd--){var t=new Date(y+621,1,25);for(var i=0;i<430;i++){var q=jp(t);if(q[0]==y&&q[1]==m&&q[2]==dd)return t;t.setDate(t.getDate()+1)}}return new Date()}
+function pd(d){return pf.format(d)}
+function add(d,k){var t=new Date(d.getFullYear(),d.getMonth(),d.getDate());t.setDate(t.getDate()+k);return t}
+function iso(d){return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
+function parse(s){var a=s.split('-');return new Date(+a[0],a[1]-1,+a[2])}
+function snap(d){var t=add(d,0);while(t.getDay()!=6)t=add(t,1);return t}
+function today0(){var t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate())}
+/* state */
+function defOrder(){var o=[],k=0,i;for(i=1;i<=26;i++){o.push('w'+i);if(i%5==3)o.push('c'+(++k))}for(i=27;i<=40;i++)o.push('w'+i);return o}
+var COMMON=['w1','w2','w3','w4','c1','w5','w6','w7','w8','c2','w13','w14','w15','w16','c3','w17','w18','w19','w24','w25','w26','c4'];
+var TAIL={vak:['w9','w10','w11','w12','c','w20','w21','w22','w23','c','x1','x2','x3','c','w27','w28','w29','w30','w31','w32','w33','w34','w35','w36','w37','w38','w39','w40'],sar:['y1','y2','y3','c','w27','w28','w29','w30','w35','w36','w37','w39','w40']};
+var TAILIDS={};['vak','sar'].forEach(function(k){TAIL[k].forEach(function(t){if(t!='c')TAILIDS[t]=1})});
+var S=null;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){canStore=false}
+if(!S||!S.order||!S.start){S=JSON.parse('{"start":"2026-10-10","order":["w1","w2","w3","w4","c1","w5","w6","w7","w8","c2","w13","w14","w15","w16","c3","w17","w18","w19","w24","w25","w26","c4"],"p":{"w1":{"0-cl":{"d":75,"c":95},"0-ts":{"d":0,"s":1},"1-cl":{"d":53,"c":90},"1-ts":{"d":0,"s":1},"1-rv":{"d":0,"s":1},"0-rv":{"d":0,"s":1},"2-cl":{"d":55,"c":86},"2-ts":{"d":0,"s":1},"2-rv":{"d":0,"s":1},"3-cl":{"d":75,"c":117},"3-ts":{"d":0,"s":1},"3-rv":{"d":0,"s":1},"4-cl":{"d":75,"c":117},"4-ts":{"d":0,"s":1},"4-rv":{"d":0,"s":1},"0-bk":{"d":45},"1-bk":{"d":0,"s":1},"2-bk":{"d":0,"s":1},"3-bk":{"d":0,"s":1},"4-bk":{"d":30},"5-a":{"d":72,"c":113},"5-b":{"d":0,"s":1},"6-c":{"d":27},"6-a":{"d":0,"s":1},"6-b":{"d":0,"s":1},"6-d":{"d":0,"s":1}}},"nc":5,"v":"w2","tab":"map","path":null,"mv":4}')}
+function mig(){var old=!(S.mv>=2);if(!(S.mv>=4)){S.order=COMMON.slice();S.path=null}S.mv=4;if(!old)return;Object.keys(S.p).forEach(function(id){if(id[0]!='w'||+id.slice(1)>26)return;var o=S.p[id];Object.keys(o).forEach(function(k){if(k.slice(-3)=='-lt'){var b=k.slice(0,-3)+'-bk';if(o[k].d>0&&!o[b])o[b]={d:o[k].d};delete o[k]}})})}
+mig();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){canStore=false;$('stnote').textContent='ذخیره‌سازی مرورگر در دسترس نیست. از پشتیبان‌گیری استفاده کن.'}}
+function startDate(){return parse(S.start)}
+function curSlot(){var d=Math.round((today0()-startDate())/DAYMS);return{d:d,s:d<0?-1:Math.floor(d/7)}}
+/* data */
+function info(id){if(id[0]=='c')return{ph:'cu',sub:'cu'};if(id[0]=='x')return{ph:'minor',sub:'mn'};if(id[0]=='y')return{ph:'sard',sub:'mn'};var n=+id.slice(1);if(n<=26){var c=CL[n-1];return{ph:'learn',sub:c[0],ses:c[1],cm:c[2],big:n>=4}}return{ph:n<=34?'test':(n<=38?'mock':'final'),sub:n<=34?'ts':(n<=38?'mk':'er')}}
+function bl(i,ph,big,w){var m=big?105:75,tT=big?'۱۱:۰۰':'۱۰:۳۰',tL=big?'۱۲:۰۰':'۱۱:۳۰';
+var x=function(id,k,min,l,t,f){return{id:id,k:k,min:min,label:l,time:t,opt:f==1,sp:f==2}};
+if(ph=='minor'||ph=='sard')return MN[w][i].map(function(a,j){return x(i+'-'+'abcd'[j],a[0],a[1],a[2],'',a[3])});
+if(ph=='learn'){
+if(i<5)return[x(i+'-cl','cl',m,'کلاس','۹:۰۰'),x(i+'-bk','bk',45,'خواندن کتاب','',0),x(i+'-ts','ts',45,'تست',tT),x(i+'-rv','rv',30,'مرور یا تست','بعد از کار',1)];
+if(i==5)return[x('5-a','cl',180,'کلاس','۹:۰۰',2),x('5-b','cl',180,'کلاس','۱۴:۰۰',2)];
+return[x('6-a','bk',90,'خواندن کتاب','۹:۰۰'),x('6-b','ts',90,'تست و دفتر اشتباهات','۱۰:۴۵'),x('6-c','bf',90,'بافر','۱۴:۰۰'),x('6-d','rv',20,'مرور هفته','۱۵:۳۰')]}
+if(ph=='test'){
+if(i<5)return[x(i+'-ts','ts',105,'تست موضوعی','۹:۰۰'),x(i+'-er','er',45,'دفتر اشتباهات','۱۱:۰۰'),x(i+'-lt','lt',45,'درس سبک','۱۲:۰۰',1),x(i+'-rv','rv',30,'مرور یا تست','بعد از کار',1)];
+if(i==5)return[x('5-a','ts',180,'تست موضوعی','۹:۰۰',2),x('5-b','ts',180,'تست موضوعی','۱۴:۰۰',2)];
+return[x('6-a','ts',180,'تست مخلوط و دفتر اشتباهات','۹:۰۰',2),x('6-b','bf',90,'بافر','۱۴:۰۰'),x('6-c','rv',20,'مرور هفته','۱۵:۳۰')]}
+if(ph=='mock'){
+if(i<5)return[x(i+'-er','er',90,'مرور ضعف‌های آزمون','۹:۰۰'),x(i+'-ts','ts',45,'تست روی ضعف‌ها','۱۰:۴۵'),x(i+'-lt','lt',45,'درس سبک','۱۱:۴۵',1),x(i+'-rv','rv',30,'مرور یا تست','بعد از کار',1)];
+if(i==5)return[x('5-a','mk',150,'آزمون آزمایشی زمان‌دار','۹:۰۰',2),x('5-b','er',180,'تحلیل آزمون و دفتر اشتباهات','۱۴:۰۰',2)];
+return[x('6-a','mk',150,'آزمون آزمایشی زمان‌دار','۹:۰۰',2),x('6-b','er',120,'تحلیل آزمون','۱۴:۰۰'),x('6-c','rv',20,'مرور هفته','۱۶:۱۵')]}
+if(i<5)return[x(i+'-e1','er',90,'دفتر اشتباهات','۹:۰۰'),x(i+'-e2','er',60,'دفتر اشتباهات، دور سریع','۱۰:۴۵'),x(i+'-rv','rv',30,'مرور سبک','بعد از کار',1)];
+if(i==5)return[x('5-a','er',150,'دفتر اشتباهات','۹:۰۰',2),x('5-b','er',150,'دفتر اشتباهات','۱۴:۰۰',2)];
+return[x('6-a','er',150,'دفتر اشتباهات','۹:۰۰',2),x('6-b','bf',60,'بافر','۱۴:۰۰'),x('6-c','rv',20,'مرور هفته','۱۵:۱۵')]}
+var W=function(a,b){return[['bk',105,a],['ts',45,b],['er',30,'دفتر اشتباهات'],['rv',30,'مرور یا تست',1]]},TH=function(a,b){return[['bk',150,a,2],['ts',180,b,2]]},FR=[['ts',120,'تست مخلوط و دفتر اشتباهات'],['bf',90,'بافر'],['rv',20,'مرور هفته']];
+var MN={x1:[W('قانون اساسی، نیمه اول','تست اساسی'),W('قانون اساسی، نیمه دوم','تست اساسی'),W('متون فقه: باب ۱ از کتاب آزمونت','تست متون'),W('متون فقه: باب ۲','تست متون'),W('متون فقه: باب ۳','تست متون'),TH('متون فقه: باب ۴ و ۵ (اگر کتابت دارد)','تست متون و اساسی'),FR],x2:[W('قانون ثبت (۱)','تست ثبت'),W('قانون ثبت (۲)','تست ثبت'),W('قوانین مرتبط با ثبت','تست ثبت'),W('اصول: الفاظ، اوامر، نواهی، عام و خاص','تست اصول'),W('اصول: مفهوم، مطلق و مقید، مجمل و مبین','تست اصول'),TH('اصول عملیه، امارات، تعارض ادله','تست ثبت و اصول'),FR]};
+var MNS={x1:['اساسی','اساسی','متون','متون','متون','متون','مرور'],x2:['ثبت','ثبت','ثبت','اصول','اصول','ثبت و اصول','مرور']};
+MN.x1=[W('قانون اساسی، نیمه اول','تست اساسی'),W('قانون اساسی، نیمه دوم','تست اساسی'),W('کانون، تحریرالوسیله: وکالت','تست متون'),W('کانون، تحریرالوسیله: شهادات','تست متون'),W('کانون، تحریرالوسیله: قضا','تست متون'),TH('مرور متون کانون','تست اساسی و متون'),FR];
+MN.x2=[W('اصول: الفاظ، اوامر، نواهی، عام و خاص','تست اصول'),W('اصول: مفهوم، مطلق و مقید، مجمل و مبین','تست اصول'),W('اصول: اصول عملیه، امارات، تعارض ادله','تست اصول'),W('ثبت: قانون ثبت (۱)','تست ثبت'),W('ثبت: قانون ثبت (۲)','تست ثبت'),TH('ثبت: قوانین مرتبط','تست اصول و ثبت'),FR];
+MN.x3=[W('مرکز ۱۴۰۵، روضه: قضاء','تست متون'),W('مرکز، روضه: تجارت (بیع)','تست متون'),W('مرکز، روضه: نکاح','تست متون'),W('مرکز، روضه: طلاق','تست متون'),W('مرکز، روضه: قصاص','تست متون'),TH('مرور متون مرکز','تست متون مرکز'),FR];
+MN.y1=[W('ثبت: قانون ثبت (۱)','تست ثبت'),W('ثبت: قانون ثبت (۲)','تست ثبت'),W('ثبت: قانون ثبت (۳)','تست ثبت'),W('ثبت: قوانین مرتبط','تست ثبت'),W('دفاتر: قانون دفاتر اسناد رسمی','تست دفاتر'),TH('دفاتر: قانون دفاتر، ادامه','تست ثبت و دفاتر'),FR];
+MN.y2=[W('دفاتر: آیین‌نامه دفاتر (۱)','تست دفاتر'),W('دفاتر: آیین‌نامه دفاتر (۲)','تست دفاتر'),W('دفاتر: آیین‌نامه اجرای مفاد اسناد','تست دفاتر'),W('ادبیات فارسی: دستور و زبان','تست ادبیات'),W('ادبیات فارسی: آرایه و تاریخ ادبیات','تست ادبیات'),TH('ادبیات فارسی، ادامه','تست ادبیات و دفاتر'),FR];
+MN.y3=[W('عربی','تست عربی'),W('احکام شرعی (۱)','تست احکام'),W('احکام شرعی (۲)','تست احکام'),W('اطلاعات عمومی و هوش (۱)','تست هوش'),W('اطلاعات عمومی و هوش (۲)','تست هوش'),TH('مرور عربی، احکام و هوش','تست مخلوط'),FR];
+MNS.x1=['اساسی','اساسی','متون کانون','متون کانون','متون کانون','اساسی و متون','مرور'];MNS.x2=['اصول','اصول','اصول','ثبت','ثبت','ثبت و اصول','مرور'];MNS.x3=['متون مرکز','متون مرکز','متون مرکز','متون مرکز','متون مرکز','متون مرکز','مرور'];
+MNS.y1=['ثبت','ثبت','ثبت','ثبت','دفاتر','ثبت و دفاتر','مرور'];MNS.y2=['دفاتر','دفاتر','دفاتر','ادبیات','ادبیات','ادبیات و دفاتر','مرور'];MNS.y3=['عربی','احکام','احکام','هوش','هوش','مرور','مرور'];
+function subOf(i,ph,w){if(ph=='minor'||ph=='sard')return MNS[w][i];if(i<5)return'روز کاری';var m={learn:['مطلب جدید','تست و مرور'],test:['تست موضوعی','تست و مرور'],mock:['آزمون آزمایشی','آزمون و تحلیل'],final:['دفتر اشتباهات','دفتر اشتباهات']};return m[ph][i-5]}
+function g(id,b){return(S.p[id]&&S.p[id][b])||{}}
+function sep(f,b){return b.k=='ts'&&(f.ph=='learn'||f.ph=='minor'||f.ph=='sard')}
+function stat(id){var f=info(id),T=0,D=0,O=0,OT=0,C=0,TT=0,TD=0,K={};if(f.ph=='cu')return{T:0,D:0,O:0,OT:0,C:0,TT:0,TD:0,p:0,K:K};
+for(var i=0;i<7;i++)bl(i,f.ph,f.big,id).forEach(function(b){var r=g(id,b.id),d=Math.min(r.d||0,b.min);if(b.opt){O+=d;OT+=b.min}else if(sep(f,b)){TT+=b.min;TD+=d}else{T+=b.min;D+=d}K[b.k+(b.opt?'o':'')]=(K[b.k+(b.opt?'o':'')]||0)+b.min;if(b.k=='cl')C+=(r.c!=null?r.c:Math.round((r.d||0)*1.25))});
+return{T:T,D:D,O:O,OT:OT,C:Math.min(C,f.cm||C),TT:TT,TD:TD,p:T?Math.round(100*D/T):0,K:K}}
+function meta(){var st=startDate(),n=0;return S.order.map(function(id,i){var f=info(id);if(f.ph!='cu')n++;return{id:id,i:i,f:f,a:add(st,i*7),n:f.ph=='cu'?0:n,s:stat(id)}})}
+function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e}
+/* picker */
+function opts(id,arr,sel){$(id).innerHTML=arr.map(function(v){return'<option value="'+v[0]+'"'+(v[0]==sel?' selected':'')+'>'+v[1]+'</option>'}).join('')}
+function syncPick(){var q=jp(startDate()),ys=[];for(var y=1405;y<=1408;y++)ys.push([y,F(y)]);opts('jy',ys,q[0]);opts('jm',MONTHS.map(function(m,i){return[i+1,m]}),q[1]);var ds=[];for(var d=1;d<=31;d++)ds.push([d,F(d)]);opts('jd',ds,q[2])}
+function pickChanged(){var d=j2g(+$('jy').value,+$('jm').value,+$('jd').value),s=snap(d);S.start=iso(s);save();syncPick();renderAll();$('snap').textContent=s.getTime()!=d.getTime()?'هفته‌ها از شنبه شروع می‌شوند؛ تاریخ به شنبه‌ی '+pd(s)+' تنظیم شد.':'هفته‌ها از شنبه شروع می‌شوند. هفته‌های جبران را با دکمه‌های داخل خودشان جابه‌جا کن.'}
+['jy','jm','jd'].forEach(function(i){$(i).onchange=pickChanged});
+$('addc').onclick=function(){S.nc++;S.order.push('c'+S.nc);save();renderAll()};
+/* map */
+function renderMap(M){
+var cs=curSlot(),T=0,D=0,C=0,CM=0,h='',cp=null;
+M.forEach(function(m){if(m.f.ph=='cu')return;T+=m.s.T;D+=m.s.D;if(m.f.cm){C+=m.s.C;CM+=m.f.cm}if(m.i==cs.s)cp=m});
+var now=$('now');
+if(cs.s<0)now.innerHTML='برنامه از <b>'+pd(startDate())+'</b> شروع می‌شود، '+F(-cs.d)+' روز دیگر.';
+else if(cs.s>=M.length)now.innerHTML=S.path?'<b>برنامه تمام شده است.</b>':'<b>به دوراهی رسیدی.</b> مسیرت را پایین صفحه‌ی نقشه انتخاب کن.';
+else if(!cp)now.innerHTML='الان <b>هفته جبران و مرور</b> است. از آن برای عقب‌افتادگی‌ها استفاده کن.';
+else now.innerHTML='الان <b>هفته '+F(cp.n)+'</b> است و '+F(cp.s.p)+'٪ پر شده · امروز '+DAYS[cs.d-cs.s*7]+'<br><button type="button" class="go" data-go="'+cp.id+'">باز کردن هفته</button>';
+$('tiles').innerHTML='<div class="tile"><b>'+F(T?Math.round(100*D/T):0)+'٪</b><small>کل برنامه</small></div><div class="tile"><b>'+F(Math.round(C/60))+'</b><small>ساعت کلاس گذرانده، از '+F(Math.round(CM/60))+'</small></div><div class="tile"><b>'+(cp?F(cp.s.p)+'٪':'—')+'</b><small>هفته جاری</small></div>';
+var past=M.filter(function(m){return m.f.ph!='cu'&&m.i<cs.s}),al=$('alert'),debt=0;
+past.forEach(function(m){if(m.f.cm)debt+=Math.max(0,m.f.cm-m.s.C)});
+var l2=past.slice(-2),two=l2.length==2&&l2[0].s.p<70&&l2[1].s.p<70,warn=two||debt>=500;
+if(warn){al.hidden=false;al.className='alert';al.innerHTML='<b>وقت جبران است:</b> '+(two?'دو هفته‌ی پشت‌سرهم کلاس و کتاب زیر ۷۰٪ ماند':'بدهی کلاس به '+F(Math.round(debt))+' دقیقه محتوا رسیده')+'. یک هفته جبران را جلو بکش.<br><button type="button" class="go" data-go="'+l2[l2.length-1].id+'">باز کردن هفته '+F(l2[l2.length-1].n)+'</button>'}
+else if(debt>0){al.hidden=false;al.className='alert info';al.innerHTML='<b>بدهی کلاس: '+F(Math.round(debt))+' دقیقه محتوا</b> (حدود '+F(Math.round(debt/1.25))+' دقیقه گوش‌دادن). هنوز جبران لازم نیست؛ آن را در بلوک‌های همین هفته جا بده. تست جدا حساب می‌شود و بدهی نمی‌سازد. هفته جبران فقط وقتی لازم است که دو هفته پشت‌سرهم زیر ۷۰٪ بماند یا بدهی کلاس از ۵۰۰ دقیقه بگذرد.'}
+else al.hidden=true;
+var L=M.filter(function(m){return m.f.ph=='learn'}),svg=$('chart');while(svg.firstChild)svg.removeChild(svg.firstChild);
+var w=620/L.length,base=146;svg.appendChild(el('line',{x1:0,x2:620,y1:base,y2:base,class:'axis'}));
+L.forEach(function(m,k){var hh=Math.max(4,m.f.cm/1250*128),fr=Math.min(1,m.s.C/m.f.cm),gg=el('g',{class:m.f.sub+(sf&&sf!=m.f.sub?' dim':'')}),x=k*w+2,bw=w-4;
+gg.appendChild(el('rect',{class:'bar bg',x:x,y:base-hh,width:bw,height:hh,rx:3,style:'--i:'+k}));
+if(fr>0)gg.appendChild(el('rect',{class:'bar',x:x,y:base-hh*fr,width:bw,height:hh*fr,rx:3,style:'--i:'+k}));svg.appendChild(gg);
+if(m.n==1||m.n%5==0){var tx=el('text',{class:'tick',x:x+bw/2,y:168});tx.textContent=F(m.n);svg.appendChild(tx)}});
+var ch='';Object.keys(N).forEach(function(k){ch+='<button type="button" class="chip '+k+'" data-sf="'+k+'" aria-pressed="'+(sf==k)+'">'+N[k]+'</button>'});$('schips').innerHTML=ch;
+var i=0;while(i<M.length){var m=M[i],f=m.f;
+if(f.ph=='cu'){h+='<div class="cell cu'+(i==cs.s?' now':'')+(sf?' dim':'')+'"><div class="top"><span class="wk">جبران و مرور'+(i==cs.s?'<span class="badge">الان</span>':'')+'</span><span class="dt">'+pd(m.a)+'</span></div><div class="ln"><span>هفته شناور</span></div><div class="mv"><button type="button" data-a="up" data-i="'+i+'">زودتر</button><button type="button" data-a="dn" data-i="'+i+'">دیرتر</button><button type="button" data-a="rm" data-i="'+i+'" aria-label="حذف">×</button></div></div>';i++}
+else if(f.ph=='learn'){h+='<div class="cell '+f.sub+(i==cs.s?' now':'')+(sf&&sf!=f.sub?' dim':'')+'" data-go="'+m.id+'" role="button" tabindex="0"><div class="top"><span class="wk">هفته '+F(m.n)+(i==cs.s?'<span class="badge">الان</span>':'')+'</span><span class="dt">'+pd(m.a)+'</span></div><div class="sb">'+N[f.sub]+'</div><div class="ln"><span>جلسه '+F(f.ses)+'</span><span>'+F(f.cm)+' د</span></div><div class="pf">'+F(m.s.p)+'٪ انجام شد</div><div class="pg"><i style="width:'+m.s.p+'%"></i></div></div>';i++}
+else{var j=i,sum=0,hn=false,ph=f.ph;while(j<M.length&&M[j].f.ph==ph){sum+=M[j].s.p;if(j==cs.s)hn=true;j++}
+var a=M[i].n,b=M[j-1].n;h+='<div class="ph'+(hn?' now':'')+(sf?' dim':'')+'" data-go="'+m.id+'" role="button" tabindex="0">'+(a==b?'هفته '+F(a):'هفته '+F(a)+' تا '+F(b))+': '+PHT[ph]+'<small>'+pd(M[i].a)+' تا '+pd(add(M[j-1].a,6))+(PHS[ph]?' · '+PHS[ph]:'')+' · '+F(Math.round(sum/(j-i)))+'٪ انجام شد</small></div>';i=j}}
+$('grid').innerHTML=h;renderFork()}
+/* week */
+function renderWeek(M){
+var ids=M.filter(function(m){return m.f.ph!='cu'}),k=0;
+ids.forEach(function(m,j){if(m.id==S.v)k=j});var m=ids[k],f=m.f,s=m.s,cs=curSlot(),isCur=m.i==cs.s,di=isCur?cs.d-cs.s*7:-1;
+$('wlabel').textContent='هفته '+F(m.n);
+$('wrange').textContent=pd(m.a)+' تا '+pd(add(m.a,6))+' · '+PHN[f.ph]+(f.ses?' · جلسه '+f.ses.replace(/\d+/g,F):'');
+$('prev').disabled=k==0;$('next').disabled=k==ids.length-1;$('prev').style.opacity=k==0?.4:1;$('next').style.opacity=k==ids.length-1?.4:1;
+$('prev').dataset.go=k>0?ids[k-1].id:'';$('next').dataset.go=k<ids.length-1?ids[k+1].id:'';
+var rem=0;if(di>=0)bl(di,f.ph,f.big,m.id).forEach(function(b){if(!b.opt&&!sep(f,b))rem+=Math.max(0,b.min-Math.min(g(m.id,b.id).d||0,b.min))});
+var sp=(f.ph=='learn'||f.ph=='minor'||f.ph=='sard');
+$('wc').innerHTML='<b>'+F(s.p)+'٪</b> از '+(sp?'کلاس و کتاب':'برنامه‌ی')+' این هفته پر شده · '+F(s.D)+' از '+F(s.T)+' دقیقه'+(sp&&s.TT?'<br>تست جدا حساب می‌شود: '+F(s.TD)+' از '+F(s.TT)+' دقیقه.':'')+(di>=0?'<br>امروز '+DAYS[di]+' است و '+F(rem)+' دقیقه '+(sp?'از کلاس و کتاب':'از برنامه‌ی اصلی')+' مانده.':(m.i<cs.s&&s.p<70?'<br>این هفته گذشته است. بدهی کلاسش در نقشه حساب می‌شود؛ تا وقتی هشدار قرمز نیامده، جبران لازم نیست.':''));
+$('cfig').hidden=f.ph!='learn';
+if(f.ph=='learn'){$('cfill').style.transform='scaleX('+Math.min(1,s.C/f.cm)+')';$('ccap').textContent='از '+F(f.cm)+' دقیقه محتوای کلاس این هفته، حدود '+F(s.C)+' دقیقه را گذرانده‌ای.'}
+$('tfig').hidden=!(sp&&s.TT);if(sp&&s.TT){$('tfill').style.transform='scaleX('+Math.min(1,s.TD/s.TT)+')';$('tcap').textContent='تست: '+F(s.TD)+' از '+F(s.TT)+' دقیقه · جدا از درصد هفته، بدون هشدار.'}
+$('fill').style.transform='scaleX('+s.p/100+')';$('pcap').textContent=F(s.D)+' از '+F(s.T)+(sp?' دقیقه‌ی کلاس و کتاب (بدون تست)':' دقیقه‌ی بلوک‌های اصلی');
+var svg=$('bar');while(svg.firstChild)svg.removeChild(svg.firstChild);
+var tot=0,keys=[];KORDER.forEach(function(kk){[kk,kk+'o'].forEach(function(q){if(s.K[q]){keys.push(q);tot+=s.K[q]}})});
+var x=620,cap=[],kc='';keys.forEach(function(q,j){var kk=q[0]+q[1]=='lt'?'lt':q.slice(0,2),op=q.length>2,wd=s.K[q]/tot*620;
+var r=el('rect',{class:'seg-rect '+kk+(op?' op':'')+(kf&&kf!=kk?' dim':''),x:x-wd,y:2,width:wd,height:44,rx:6,style:'--i:'+j});svg.appendChild(r);x-=wd;
+if(!op)cap.push(KIND[kk]+' '+F(Math.round(s.K[q]/(s.T+s.TT)*100))+'٪')});
+$('cap').textContent=cap.join(' · ')+'. خط‌چین یعنی اختیاری.';
+KORDER.forEach(function(kk){if(s.K[kk]||s.K[kk+'o'])kc+='<button type="button" class="chip '+kk+'" data-kf="'+kk+'" aria-pressed="'+(kf==kk)+'">'+KIND[kk]+'</button>'});$('kchips').innerHTML=kc;
+var h='';for(var i=0;i<7;i++){h+='<div class="r'+(i==di?' today':'')+'"><div class="d">'+DAYS[i]+'<small>'+pd(add(m.a,i))+'</small><small>'+subOf(i,f.ph,m.id)+'</small>'+(i==di?'<span class="tg">امروز</span>':'')+'</div>';
+bl(i,f.ph,f.big,m.id).forEach(function(b){var r=g(m.id,b.id),d=Math.min(r.d||0,b.min),st=r.s?'انجام نشد':(d>=b.min?'انجام شد':(d>0?F(d)+' از '+F(b.min):''));
+h+='<div class="b '+b.k+(b.opt?' op':'')+(d>=b.min?' done':'')+(r.s?' skip':'')+(b.sp?' s2':'')+(kf&&kf!=b.k?' dim':'')+'" data-b="'+b.id+'" role="button" tabindex="0"><span class="lb">'+b.label+'</span><b>'+F(b.min)+' د</b><span class="st">'+st+'</span><div class="pg"><i style="width:'+Math.round(100*d/b.min)+'%"></i></div></div>'});h+='</div>'}
+$('rows').innerHTML=h;
+$('bonusWrap').innerHTML='<div class="b bonus lt op"><span class="lb">بلوک‌های اختیاری این هفته</span><b>'+F(s.O)+' از '+F(s.OT)+' د</b><small>در درصد هفته حساب نمی‌شوند.</small></div>'}
+function renderAll(){var M=meta();var ids=M.filter(function(m){return m.f.ph!='cu'});if(!ids.some(function(m){return m.id==S.v}))S.v=ids[0].id;
+renderMap(M);renderWeek(M);$('vMap').hidden=S.tab!='map';$('vWeek').hidden=S.tab!='week';
+Array.prototype.forEach.call($('tabs').children,function(b){b.setAttribute('aria-pressed',b.dataset.v==S.tab)})}
+/* dialog */
+function openBlock(bid){var f=info(S.v),b=null;for(var i=0;i<7;i++)bl(i,f.ph,f.big,S.v).forEach(function(x){if(x.id==bid){b=x;b.day=i}});if(!b)return;cur=b;
+var r=g(S.v,bid);$('dt').textContent=b.label+' · '+DAYS[b.day];$('dp').textContent=F(b.min)+' دقیقه برنامه‌ریزی شده'+(b.opt?' (اختیاری)':'');
+$('inD').value=r.d?F(r.d):'';$('inR').value=F(Math.max(0,b.min-(r.d||0)));$('rowC').hidden=b.k!='cl';$('inC').value=r.c!=null?F(r.c):'';
+var d=$('dlg');if(d.showModal)d.showModal();else d.setAttribute('open','')}
+function num(id){return parseInt(toEn($(id).value).replace(/\D/g,''),10)||0}
+$('inD').oninput=function(){$('inR').value=F(Math.max(0,cur.min-num('inD')))};
+$('inR').oninput=function(){$('inD').value=F(Math.max(0,cur.min-num('inR')))};
+function setB(v){S.p[S.v]=S.p[S.v]||{};if(v)S.p[S.v][cur.id]=v;else delete S.p[S.v][cur.id];save();$('dlg').close&&$('dlg').close();renderAll()}
+$('bSave').onclick=function(){var d=Math.min(cur.min,num('inD')),v={d:d};if(!d)v=null;if(v&&cur.k=='cl'&&$('inC').value.trim())v.c=num('inC');setB(v)};
+$('bFull').onclick=function(){setB({d:cur.min})};
+$('bSkip').onclick=function(){setB({d:0,s:1})};
+$('bClear').onclick=function(){setB(null)};
+$('bClose').onclick=function(){$('dlg').close()};
+/* events */
+function renderFork(){var fk=$('fork');if(!S.path){fk.innerHTML='<h3>دوراهی</h3><p>بعد از هفته‌های مشترک بالا (مدنی، جزا، تجارت) یک مسیر را انتخاب کن. بعداً هم می‌توانی عوضش کنی.</p><div class="two"><button type="button" data-path="sar">سردفتری<small>حدود ۱۳ هفته</small></button><button type="button" data-path="vak">وکالت<small>حدود ۲۸ هفته</small></button></div>'}else{fk.innerHTML='<p>مسیر فعلی: <b>'+(S.path=='vak'?'وکالت':'سردفتری')+'</b></p><button type="button" class="go" data-path="'+(S.path=='vak'?'sar':'vak')+'">تغییر مسیر</button>'}}
+function choosePath(p){if(S.path&&S.path!=p&&!confirm('مسیر عوض شود؟ هفته‌های مسیر فعلی از برنامه برداشته می‌شوند ولی ثبت‌هایت می‌ماند.'))return;var o=S.order,k=o.length;for(var i=0;i<o.length;i++)if(TAILIDS[o[i]]){k=i;break}S.order=o.slice(0,k).concat(TAIL[p].map(function(t){return t=='c'?'c'+(++S.nc):t}));S.path=p;save();renderAll()}
+function act(e){var t=e.target,pc=t.closest('[data-path]');if(pc){choosePath(pc.dataset.path);return}var b=t.closest('button[data-a]');
+if(b){var i=+b.dataset.i,o=S.order,a=b.dataset.a;if(a=='up'&&i>0){var q=o[i];o[i]=o[i-1];o[i-1]=q}if(a=='dn'&&i<o.length-1){var q2=o[i];o[i]=o[i+1];o[i+1]=q2}if(a=='rm')o.splice(i,1);save();renderAll();return}
+var sc=t.closest('[data-sf]');if(sc){sf=sf==sc.dataset.sf?null:sc.dataset.sf;renderAll();return}
+var kc=t.closest('[data-kf]');if(kc){kf=kf==kc.dataset.kf?null:kc.dataset.kf;renderAll();return}
+var go=t.closest('[data-go]');if(go&&go.dataset.go){S.v=go.dataset.go;S.tab='week';save();renderAll();window.scrollTo(0,0);return}
+var bb=t.closest('[data-b]');if(bb)openBlock(bb.dataset.b)}
+document.body.addEventListener('click',act);
+document.body.addEventListener('keydown',function(e){if((e.key=='Enter'||e.key==' ')&&e.target.getAttribute&&e.target.getAttribute('role')=='button'){e.preventDefault();act(e)}});
+$('tabs').onclick=function(e){var b=e.target.closest('button');if(b){S.tab=b.dataset.v;save();renderAll();window.scrollTo(0,0)}};
+$('bk').onclick=function(){$('ta').value=JSON.stringify(S);var d=$('dlg2');if(d.showModal)d.showModal();else d.setAttribute('open','')};
+$('bCopy').onclick=function(){$('ta').select();try{navigator.clipboard.writeText($('ta').value)}catch(e){try{document.execCommand('copy')}catch(e2){}}};
+$('bRest').onclick=function(){try{var o=JSON.parse($('ta').value);if(!o.order||!o.start||!o.p)throw 0;S=o;mig();save();syncPick();renderAll();$('dlg2').close()}catch(e){$('ta').value='متن پشتیبان معتبر نیست.'}};
+$('bClose2').onclick=function(){$('dlg2').close()};
+syncPick();renderAll();
+})();
+</script>
+</body>
+</html>
