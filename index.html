@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>برنامه آزمون وکالت ۱۴۰۶</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#EEF2F6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
@@ -338,6 +340,16 @@ $('bRest').onclick=function(){try{var o=JSON.parse($('ta').value);if(!o.order||!
 $('bClose2').onclick=function(){$('dlg2').close()};
 syncPick();renderAll();
 })();
+</script>
+  <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js')
+      .catch(function (error) {
+        console.log('Offline setup:', error);
+      });
+  });
+}
 </script>
 </body>
 </html>
